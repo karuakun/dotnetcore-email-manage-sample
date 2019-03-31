@@ -1,0 +1,38 @@
+﻿@model SendGridSample.Models.SendMailViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>SendMailViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <fieldset>
+                    <div>
+                        <label>From</label>
+                        @Html.TextBoxFor(m => m.FromAddress.Address)
+                    </div>
+                    <div>
+                        <label>From</label>
+                        @Html.TextBoxFor(m => m.ToAddress.Address)
+                    </div>
+                    <div>
+                        Subject: @Html.TextBoxFor(m => m.Message.Subject)
+                        Contents: @Html.TextAreaFor(m => m.Message.Contents)
+                    </div>
+                </fieldset>
+                <input type="submit" value="送信" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
